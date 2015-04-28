@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WherePhone.Views.MainView">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <Label Grid.Row="0" Text="Где телефон" FontSize="30"  VerticalOptions="Start" HorizontalOptions="Center" />
+    <StackLayout Grid.Row="1" Orientation="Horizontal" VerticalOptions="Start">
+      <Label Text="Уникальный идентификатор" FontSize="20"    />
+      <Label Text="{Binding DeviceId}" FontSize="20"   />
+    </StackLayout>
+   
+  <StackLayout Grid.Row="2">
+    <Button Text="Другие устройства" Command="{Binding GoToAllDevicesCommand}"/>
+    <Button Text="Взять меня" Command="{Binding GoToTakeMeCommand}"/>
+  </StackLayout>
+
+</Grid>
+
+</ContentPage>
