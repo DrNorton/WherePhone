@@ -189,6 +189,10 @@
       <HintPath>..\..\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Novell.Directory.Ldap, Version=2.2.1.0, Culture=neutral">
+      <HintPath>..\..\packages\Novell.Directory.Ldap.2.2.1\lib\Novell.Directory.Ldap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="WriteableBitmapExWinPhone">
       <HintPath>..\..\packages\ZXing.Net.Mobile.1.4.7.1\lib\wp8\WriteableBitmapExWinPhone.dll</HintPath>
     </Reference>

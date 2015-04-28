@@ -31,7 +31,7 @@ namespace WherePhone.ViewModels
             _allDevicesView = allDevicesView;
             _takeMeView = takeMeView;
             _generator = generator; 
-
+            new LdapDirectoryService().Get();
           
            
          
