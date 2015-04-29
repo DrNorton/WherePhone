@@ -9,6 +9,7 @@ using Autofac.Core;
 using WherePhone.Api;
 using WherePhone.Api.Executer;
 using WherePhone.Api.Facade;
+
 using WherePhone.ViewModels;
 using WherePhone.Views;
 

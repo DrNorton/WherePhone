@@ -33,5 +33,7 @@ namespace WherePhone.Api.Requests.Base
 
 
        public HttpMethod Type { get; set; }
+
+       public string BaseUrl { get; set; }
     }
 }

@@ -6,6 +6,7 @@ namespace WherePhone.Api.Requests.Base
 {
     public interface IRequest
     {
+        string BaseUrl { get; set; }
         string Controller { get; }
         string MethodName { get; }
 

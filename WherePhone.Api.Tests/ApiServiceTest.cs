@@ -18,7 +18,14 @@ namespace WherePhone.Api.Tests
             var result = await facade.GetPhoneList();
             Assert.Greater(result.Count, 0);
         }
-
+        [Test()]
+        public async void GetUsers()
+        {
+            var apiSettings = new FakeApiSettings();
+            var facade = new ApiFacade(new ApiExecuter(apiSettings), apiSettings);
+            var result = await facade.GetUsers();
+            Assert.Greater(result.Count, 0);
+        }
      
 
 

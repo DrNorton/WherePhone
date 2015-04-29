@@ -2,22 +2,23 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WherePhone.Views.TakeMeView">
+  <Grid>
   <StackLayout>
     <Label Text="Взять" VerticalOptions="Center" HorizontalOptions="Center" />
     <Label Text="{Binding YouName}" FontSize="40" VerticalOptions="Center" HorizontalOptions="Center" />
     <Button Text="Считать QR" Command="{Binding GetQrCodeCommand}"/>
-    
+    <SearchBar  Placeholder="Введи своё имя" Text="{Binding Pattern,Mode=TwoWay}"  BackgroundColor="White"/>
     <ListView ItemsSource="{Binding Users}" VerticalOptions="Center" HorizontalOptions="Center">
       <ListView.ItemTemplate>
         <DataTemplate>
           <ImageCell
-           Text="{Binding Email}"
-           Detail="{Binding FirstName}"
-           ImageSource="http://www.informasimalaysia.com.my/staff/power_user/gal/images/1394462980ook%20anonymous.jpg">
+           Text="{Binding CommonName}"
+           Detail="{Binding Email}">
           </ImageCell>
         </DataTemplate>
       </ListView.ItemTemplate>
     </ListView>
   </StackLayout>
-
+  <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" IsRunning="{Binding IsLoading,Mode=TwoWay}"/>
+</Grid>
 </ContentPage>

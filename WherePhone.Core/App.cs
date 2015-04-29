@@ -12,6 +12,7 @@ namespace WherePhone.Core
         public App()
         {
             Current = this;
+
         }
 
         public ResourceDictionary Resources { get; set; }

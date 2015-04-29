@@ -26,10 +26,16 @@ namespace WherePhone.Api.Facade
         public Task<List<Phone>> GetPhoneList()
         {
             var getPostRequest = new GetDeviceListRequest();
-         
+            getPostRequest.BaseUrl = _apiSettings.BaseUrl;
             return ExecuteWithErrorHandling<List<Phone>>(getPostRequest);
         }
 
+        public Task<List<User>> GetUsers()
+        {
+            var getPostRequest = new GetUsersRequest();
+            getPostRequest.BaseUrl = _apiSettings.UserApiUrl;
+            return ExecuteWithErrorHandling<List<User>>(getPostRequest);
+        }
 
 
 

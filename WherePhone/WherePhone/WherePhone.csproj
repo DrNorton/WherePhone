@@ -39,9 +39,7 @@
     <Compile Include="ApiSettings.cs" />
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="IAppIdGenerator.cs" />
-    <Compile Include="IClonable.cs" />
     <Compile Include="Installer.cs" />
-    <Compile Include="Ldap\LdapDirectoryService.cs" />
     <Compile Include="ViewModels\AllDevicesViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\TakeMeViewModel.cs" />

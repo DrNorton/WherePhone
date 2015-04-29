@@ -5,7 +5,10 @@ namespace WherePhone.Api.Tests
     public class FakeApiSettings : IApiSettings
     {
         private Token _token;
-
+        public string UserApiUrl
+        {
+            get { return "http://10.3.2.6:82"; }
+        }
 
         public string BaseUrl
         {

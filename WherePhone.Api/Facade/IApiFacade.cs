@@ -8,5 +8,6 @@ namespace WherePhone.Api.Facade
     public interface IApiFacade
     {
         Task<List<Phone>> GetPhoneList();
+        Task<List<User>> GetUsers();
     }
 }

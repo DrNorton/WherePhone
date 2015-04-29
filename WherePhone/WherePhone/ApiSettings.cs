@@ -20,5 +20,11 @@ namespace WherePhone
             get { return _token; }
             set { _token = value; }
         }
+
+
+        public string UserApiUrl
+        {
+            get { return "http://10.3.2.6:82"; }
+        }
     }
 }

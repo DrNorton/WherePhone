@@ -16,7 +16,7 @@ namespace WherePhone.Api.Executer
 
         public ApiExecuter(IApiSettings apiSettings)
         {
-            _restClient = new RestSharp.Portable.RestClient(apiSettings.BaseUrl);
+            _restClient = new RestSharp.Portable.RestClient();
             _restClient.AddHandler("application/json", new JsonDeserializer());
        
         }
@@ -81,7 +81,7 @@ namespace WherePhone.Api.Executer
             var url = String.IsNullOrEmpty(request.Controller)
                 ? request.MethodName
                 : String.Format("{0}/{1}", request.Controller, request.MethodName);
-
+            _restClient.BaseUrl = new Uri(request.BaseUrl);
             var restRequest = new RestRequest(url, request.Type);
             return restRequest;
         }
