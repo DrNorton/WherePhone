@@ -29,7 +29,7 @@ namespace WherePhone.ViewModels
             _apiFacade = apiFacade;
             _users = new ObservableCollection<User>();
             _usersBeforeFilter=new List<User>();
-             GetPeoples();
+            // GetPeoples();
         }
 
         

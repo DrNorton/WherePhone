@@ -2,22 +2,57 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WherePhone.Views.MainView">
-  <Grid>
+  <Grid  BackgroundColor="#edecea">
     <Grid.RowDefinitions>
+      <RowDefinition Height="12*"/>
+      <RowDefinition Height="88*"/>
       <RowDefinition Height="Auto"/>
-      <RowDefinition/>
       <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+    
     </Grid.RowDefinitions>
-    <Label Grid.Row="0" Text="Где телефон" FontSize="30"  VerticalOptions="Start" HorizontalOptions="Center" />
-    <StackLayout Grid.Row="1" Orientation="Horizontal" VerticalOptions="Start">
-      <Label Text="Уникальный идентификатор" FontSize="20"    />
-      <Label Text="{Binding DeviceId}" FontSize="20"   />
+    <StackLayout   BackgroundColor="#e24a37" Grid.Row="0">
+      <Label   Text="Где телефон?" FontSize="30"  VerticalOptions="CenterAndExpand" HorizontalOptions="Center" />
     </StackLayout>
-   
-  <StackLayout Grid.Row="2">
-    <Button Text="Другие устройства" Command="{Binding GoToAllDevicesCommand}"/>
-    <Button Text="Взять меня" Command="{Binding GoToTakeMeCommand}"/>
-  </StackLayout>
+    <ScrollView Grid.Row="1" VerticalOptions="StartAndExpand">
+      <StackLayout Padding="0,-10,0,0"   Orientation="Vertical" VerticalOptions="Start">
+
+        <StackLayout BackgroundColor="White" >
+          <StackLayout Padding="20">
+            <Label FontFamily="Segoe" TextColor="#5f5e5c" Text="Уникальный идентификатор:"  FontSize="20"    />
+            <Label TextColor="#e54126"  Text="{Binding DeviceId}" FontSize="20"   />
+          </StackLayout>
+
+        </StackLayout>
+
+        <StackLayout BackgroundColor="White" >
+          <StackLayout Padding="20">
+            <Label  TextColor="#5f5e5c" Text="Модель устройства:"  FontSize="20"    />
+            <Label TextColor="#e54126"  Text="Nokia Lumia 520" FontSize="20"   />
+          </StackLayout>
+        </StackLayout>
+
+        <StackLayout BackgroundColor="White" >
+          <StackLayout Padding="20">
+            <Label  TextColor="#5f5e5c" Text="Текущий владелец"  FontSize="20"    />
+            <Label TextColor="#e54126"  Text="Шелепюк Максим" FontSize="20"   />
+          </StackLayout>
+        </StackLayout>
+
+
+      </StackLayout>
+    </ScrollView>
+    
+    <StackLayout Grid.Row="3" HorizontalOptions="Center" Orientation="Horizontal">
+      <StackLayout  Grid.Row="2" HorizontalOptions="CenterAndExpand"  BackgroundColor="#e24a37" >
+        <Button  BorderColor="#e24a37" BackgroundColor="#e24a37"   Text="Взять меня" Command="{Binding GoToTakeMeCommand}"/>
+      </StackLayout>
+
+      <StackLayout HorizontalOptions="Center"    BackgroundColor="#e24a37" >
+        <Button   BorderColor="#e24a37" BackgroundColor="#e24a37" Grid.Row="4" Text="Другие" Command="{Binding GoToAllDevicesCommand}"/>
+      </StackLayout>
+
+    </StackLayout>
 
 </Grid>
 

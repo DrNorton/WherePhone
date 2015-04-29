@@ -26,13 +26,8 @@ namespace WherePhone.ViewModels
         public MainViewModel(IApiFacade apiFacade, IAppIdGenerator generator)
         {
             _apiFacade = apiFacade;
-  
-            _generator = generator; 
-        
-            
-
-
-
+            _generator = generator;
+            _deviceId = _generator.GetIdentifier();
         }
 
         public ICommand GoToAllDevicesCommand
