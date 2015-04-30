@@ -19,7 +19,7 @@ namespace WherePhone.ViewModels
         private readonly IApiFacade _apiFacade;
 
         private bool _isLoading;
-        private string _youName;
+      
         private List<User> _usersBeforeFilter;
         private ObservableCollection<User> _users;
         private string _pattern;
@@ -29,7 +29,7 @@ namespace WherePhone.ViewModels
             _apiFacade = apiFacade;
             _users = new ObservableCollection<User>();
             _usersBeforeFilter=new List<User>();
-            // GetPeoples();
+            GetPeoples();
         }
 
         
@@ -55,15 +55,7 @@ namespace WherePhone.ViewModels
 
      
 
-        public string YouName
-        {
-            get { return _youName; }
-            set
-            {
-                _youName = value;
-                base.OnPropertyChanged("YouName");
-            }
-        }
+      
 
         public ObservableCollection<User> Users
         {
@@ -113,7 +105,7 @@ namespace WherePhone.ViewModels
             else
             {
                 var msg = String.Format("Barcode: {0} - {1}", result.Format, result.Code);
-                YouName = result.Code;
+                Pattern = result.Code;
             }
         }
     }
