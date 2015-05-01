@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using WherePhone.Api.ExceptionRouter;
 using WherePhone.Api.Executer;
@@ -25,19 +26,58 @@ namespace WherePhone.Api.Facade
 
         public Task<List<Phone>> GetPhoneList()
         {
-            var getPostRequest = new GetDeviceListRequest();
-            getPostRequest.BaseUrl = _apiSettings.BaseUrl;
-            return ExecuteWithErrorHandling<List<Phone>>(getPostRequest);
+            var getDeviceListRequest = new GetDeviceListRequest();
+            getDeviceListRequest.BaseUrl = _apiSettings.BaseUrl;
+            return ExecuteWithErrorHandling<List<Phone>>(getDeviceListRequest);
+        }
+
+        public async Task<Phone> GetPhone(string id)
+        {
+            var getDeviceRequest = new GetDeviceRequest(id);
+            getDeviceRequest.BaseUrl = _apiSettings.BaseUrl;
+            var phones= await ExecuteWithErrorHandling<List<Phone>>(getDeviceRequest);
+            if (phones == null) return null;
+            return phones.FirstOrDefault();
+        }
+
+        public async Task<Phone> AddPhone(Phone newPhone)
+        {
+            var addPhoneRequest = new AddPhoneRequest(newPhone);
+            addPhoneRequest.BaseUrl = _apiSettings.BaseUrl;
+            var result = await ExecuteWithErrorHandling<Phone>(addPhoneRequest);
+            return result;
+        }
+
+        public async Task<Phone> DeletePhone(Phone deletedPhone)
+        {
+            var deletePhoneRequest = new DeletePhoneRequest(deletedPhone.Udid);
+            deletePhoneRequest.BaseUrl = _apiSettings.BaseUrl;
+            var result = await ExecuteWithErrorHandling<Phone>(deletePhoneRequest);
+            return result;
         }
 
         public Task<List<User>> GetUsers()
         {
-            var getPostRequest = new GetUsersRequest();
-            getPostRequest.BaseUrl = _apiSettings.UserApiUrl;
-            return ExecuteWithErrorHandling<List<User>>(getPostRequest);
+            var getUsersRequest = new GetUsersRequest();
+            getUsersRequest.BaseUrl = _apiSettings.UserApiUrl;
+            return ExecuteWithErrorHandling<List<User>>(getUsersRequest);
         }
 
+        public Task<List<BorrowTicket>> GetBorrowTickets()
+        {
+            var borrowListRequest = new GetBorrowListRequest();
+            borrowListRequest.BaseUrl = _apiSettings.BaseUrl;
+            return ExecuteWithErrorHandling<List<BorrowTicket>>(borrowListRequest);
+        }
 
+        public async Task<BorrowTicket> GetBorrow(string id)
+        {
+            var getBorrowRequest = new GetBorrowRequest(id);
+            getBorrowRequest.BaseUrl = _apiSettings.BaseUrl;
+            var phones = await ExecuteWithErrorHandling<List<BorrowTicket>>(getBorrowRequest);
+            if (phones == null) return null;
+            return phones.FirstOrDefault();
+        }
 
         private Task<T> ExecuteWithErrorHandling<T>(IRequest request)
         {

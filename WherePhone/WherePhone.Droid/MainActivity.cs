@@ -20,7 +20,7 @@ namespace WherePhone.Droid
             base.OnCreate(bundle);
             BarCodes.Init(this);
             global::Xamarin.Forms.Forms.Init(this, bundle);
-            LoadApplication(new WherePhoneApp(new AppIdGenerator()));
+            LoadApplication(new WherePhoneApp());
         }
     }
 }

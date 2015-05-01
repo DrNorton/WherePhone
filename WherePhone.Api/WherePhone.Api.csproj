@@ -45,13 +45,22 @@
     <Compile Include="Facade\IApiFacade.cs" />
     <Compile Include="IApiSettings.cs" />
     <Compile Include="Models\ApiResponse.cs" />
+    <Compile Include="Models\Base\DictionaryExtension.cs" />
+    <Compile Include="Models\Borrower.cs" />
+    <Compile Include="Models\BorrowTicket.cs" />
+    <Compile Include="Models\DeviceId.cs" />
     <Compile Include="Models\Phone.cs" />
     <Compile Include="Models\Token.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Requests\AddPhoneRequest.cs" />
     <Compile Include="Requests\Base\BaseParamRequest.cs" />
     <Compile Include="Requests\Base\IRequest.cs" />
+    <Compile Include="Requests\DeletePhoneRequest.cs" />
+    <Compile Include="Requests\GetBorrowRequest.cs" />
+    <Compile Include="Requests\GetBorrowListRequest.cs" />
     <Compile Include="Requests\GetDeviceListRequest.cs" />
+    <Compile Include="Requests\GetDeviceRequest.cs" />
     <Compile Include="Requests\GetUsersRequest.cs" />
   </ItemGroup>
   <ItemGroup>

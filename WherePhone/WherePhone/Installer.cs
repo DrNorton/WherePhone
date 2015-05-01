@@ -19,8 +19,9 @@ namespace WherePhone
     {
         protected override void Load(ContainerBuilder builder)
         {
-
-         
+            builder.RegisterType<AppIdGenerator>()
+                   .As<IAppIdGenerator>()
+                   .SingleInstance();
 
             builder.RegisterType<ApiSettings>()
                 .As<IApiSettings>()

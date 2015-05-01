@@ -4,50 +4,57 @@
              x:Class="WherePhone.Views.MainView">
   <Grid  BackgroundColor="#edecea">
     <Grid.RowDefinitions>
-      <RowDefinition Height="12*"/>
-      <RowDefinition Height="88*"/>
       <RowDefinition Height="Auto"/>
+      <RowDefinition/>
       <RowDefinition Height="Auto"/>
-      <RowDefinition Height="Auto"/>
-    
     </Grid.RowDefinitions>
-    <StackLayout   BackgroundColor="#e24a37" Grid.Row="0">
+    
+    <StackLayout   BackgroundColor="#e24a37" Padding="10" Grid.Row="0">
       <Label   Text="Где телефон?" FontSize="30"  VerticalOptions="CenterAndExpand" HorizontalOptions="Center" />
     </StackLayout>
-    <ScrollView Grid.Row="1" VerticalOptions="StartAndExpand">
+    
+    <StackLayout Padding="10" Orientation="Vertical" Grid.Row="1">
+    
       <StackLayout Padding="0,-10,0,0"   Orientation="Vertical" VerticalOptions="Start">
-
-        <StackLayout BackgroundColor="White" >
-          <StackLayout Padding="20">
-            <Label FontFamily="Segoe" TextColor="#5f5e5c" Text="Уникальный идентификатор:"  FontSize="20"    />
-            <Label TextColor="#e54126"  Text="{Binding DeviceId}" FontSize="20"   />
-          </StackLayout>
-
-        </StackLayout>
-
         <StackLayout BackgroundColor="White" >
           <StackLayout Padding="20">
             <Label  TextColor="#5f5e5c" Text="Модель устройства:"  FontSize="20"    />
-            <Label TextColor="#e54126"  Text="Nokia Lumia 520" FontSize="20"   />
+            <Label TextColor="#e54126"  Text="{Binding Model,Mode=TwoWay}" FontSize="20"   />
+          </StackLayout>
+        </StackLayout>
+        
+           <StackLayout BackgroundColor="White" >
+          <StackLayout Padding="20">
+            <Label  TextColor="#5f5e5c" Text="Операционная система:"  FontSize="20"    />
+            <StackLayout Orientation="Horizontal">
+                  <Label TextColor="#e54126"  Text="{Binding Platform,Mode=TwoWay}" FontSize="20"   />
+                  <Label TextColor="#e54126"  Text="{Binding Version,Mode=TwoWay}" FontSize="20"   />
+            </StackLayout>
+        
+  
           </StackLayout>
         </StackLayout>
 
+      </StackLayout>
+    
+    
+    
+      <StackLayout Padding="0,10,0,0">
         <StackLayout BackgroundColor="White" >
           <StackLayout Padding="20">
             <Label  TextColor="#5f5e5c" Text="Текущий владелец"  FontSize="20"    />
             <Label TextColor="#e54126"  Text="Шелепюк Максим" FontSize="20"   />
           </StackLayout>
         </StackLayout>
-
-
       </StackLayout>
-    </ScrollView>
+
+    </StackLayout>
+   
     
-    <StackLayout Grid.Row="3" HorizontalOptions="Center" Orientation="Horizontal">
-      <StackLayout  Grid.Row="2" HorizontalOptions="CenterAndExpand"  BackgroundColor="#e24a37" >
+    <StackLayout  Grid.Row="2" VerticalOptions="EndAndExpand" HorizontalOptions="Center" Orientation="Horizontal">
+      <StackLayout   HorizontalOptions="CenterAndExpand"  BackgroundColor="#e24a37" >
         <Button  BorderColor="#e24a37" BackgroundColor="#e24a37"   Text="Взять меня" Command="{Binding GoToTakeMeCommand}"/>
       </StackLayout>
-
       <StackLayout HorizontalOptions="Center"    BackgroundColor="#e24a37" >
         <Button   BorderColor="#e24a37" BackgroundColor="#e24a37" Grid.Row="4" Text="Другие" Command="{Binding GoToAllDevicesCommand}"/>
       </StackLayout>

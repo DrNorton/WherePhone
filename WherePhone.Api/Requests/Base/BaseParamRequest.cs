@@ -6,11 +6,11 @@ namespace WherePhone.Api.Requests.Base
 {
     public abstract class BaseParamRequest:IRequest
     {
-        private Dictionary<string, string> _params;
+        private Dictionary<string, object> _params;
 
         public BaseParamRequest()
         {
-            _params = new Dictionary<string, string>();
+            _params = new Dictionary<string, object>();
             Type = HttpMethod.Get; // По умолчанию
         }
 
@@ -22,9 +22,10 @@ namespace WherePhone.Api.Requests.Base
        public abstract string Controller { get; }
        public abstract  string MethodName { get; }
 
-       public Dictionary<string, string> Params
+       public Dictionary<string, object> Params
        {
             get { return _params; }
+           set { _params = value; }
        }
 
 

@@ -12,14 +12,11 @@ namespace WherePhone
     public class Bootstrapper
     {
 
-        public static void Run(Application app, IAppIdGenerator generator)
+        public static void Run(Application app)
         {
             var builder = new ContainerBuilder();
             builder.RegisterModule<Installer>();
 
-            builder.RegisterInstance(generator)
-             .As<IAppIdGenerator>()
-             .SingleInstance();
 
             var container = builder.Build();
             IoC.Init(container);

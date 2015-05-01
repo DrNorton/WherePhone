@@ -1,24 +1,22 @@
-﻿using System.Collections.Generic;
-using System.Net.Http;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using WherePhone.Api.Requests.Base;
 
 namespace WherePhone.Api.Requests
 {
-    public class GetDeviceListRequest : BaseParamRequest
+    public class GetBorrowListRequest:BaseParamRequest
     {
         public override string Controller
         {
-            get { return "device"; }
-
+            get { return "borrowing"; }
         }
+
         public override string MethodName
         {
             get { return "list"; }
-        }
-
-        public GetDeviceListRequest()
-        {
-           
         }
     }
 }

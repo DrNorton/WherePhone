@@ -19,7 +19,7 @@ namespace WherePhone.WinPhone
             SupportedOrientations = SupportedPageOrientation.PortraitOrLandscape;
             BarCodes.Init();
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new WherePhoneApp(new AppIdGenerator()));
+            LoadApplication(new WherePhoneApp());
         }
     }
 }

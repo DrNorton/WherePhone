@@ -49,9 +49,9 @@ namespace WherePhone.Api.Requests
             }
         }
 
-        public Dictionary<string, string> Params
+        public Dictionary<string, object> Params
         {
-            get { return new Dictionary<string, string>();}
+            get { return new Dictionary<string, object>();}
         }
     }
 }

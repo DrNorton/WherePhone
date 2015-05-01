@@ -7,10 +7,10 @@ namespace WherePhone
 	{
 	    private static WherePhoneApp _current;
 
-		public WherePhoneApp(IAppIdGenerator generator)
+		public WherePhoneApp()
 		{
 			InitializeComponent();
-            Bootstrapper.Run(this,generator);
+            Bootstrapper.Run(this);
         }
 
       

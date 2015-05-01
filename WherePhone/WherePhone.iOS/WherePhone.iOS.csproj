@@ -102,6 +102,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\WherePhone.Api\WherePhone.Api.csproj">
+      <Project>{e4960d7f-ec7b-4967-9abb-144f99b9d780}</Project>
+      <Name>WherePhone.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WherePhone.Core\WherePhone.Core.csproj">
+      <Project>{43fa7074-13a5-428d-a401-2dc8da6f1c12}</Project>
+      <Name>WherePhone.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WherePhone\WherePhone.csproj">
       <Name>WherePhone</Name>
     </ProjectReference>

@@ -13,6 +13,6 @@ namespace WherePhone.Api.Requests.Base
         HttpMethod Type { get; set; }
 
         Token Token { get; set; }
-        Dictionary<string, string> Params { get; } 
+        Dictionary<string, object> Params { get; } 
     }
 }
