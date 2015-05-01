@@ -2,23 +2,45 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WherePhone.Views.TakeMeView">
-  <Grid>
-  <StackLayout>
-    <Label Text="Взять" VerticalOptions="Center" HorizontalOptions="Center" />
-    <Label Text="{Binding YouName}" FontSize="40" VerticalOptions="Center" HorizontalOptions="Center" />
-    <Button Text="Считать QR" Command="{Binding GetQrCodeCommand}"/>
-    <SearchBar  Placeholder="Введи своё имя" Text="{Binding Pattern,Mode=TwoWay}"  BackgroundColor="White"/>
-    <ListView ItemsSource="{Binding Users}" VerticalOptions="Center" HorizontalOptions="Center">
+  
+    <Grid  BackgroundColor="#edecea">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="20*"/>
+      <RowDefinition Height="80*"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <StackLayout   BackgroundColor="#e24a37" Grid.Row="0">
+     <Label   Text="Взять" FontSize="30"  VerticalOptions="CenterAndExpand" HorizontalOptions="Center" />
+     <SearchBar  Placeholder="Введи своё имя" Text="{Binding Pattern,Mode=TwoWay}"  BackgroundColor="White"/>
+    </StackLayout>
+    
+     <StackLayout BackgroundColor="#edecea" Grid.Row="1" VerticalOptions="Fill" HorizontalOptions="Fill">
+         
+     <ListView ItemsSource="{Binding Users}" BackgroundColor="White" >
       <ListView.ItemTemplate>
         <DataTemplate>
-          <ImageCell
+   
+          <TextCell  TextColor="Black" DetailColor="#e24a37"
            Text="{Binding CommonName}"
            Detail="{Binding Email}">
-          </ImageCell>
+          </TextCell>
+                
         </DataTemplate>
       </ListView.ItemTemplate>
     </ListView>
-  </StackLayout>
-  <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" IsRunning="{Binding IsLoading,Mode=TwoWay}"/>
-</Grid>
+       
+
+        </StackLayout>
+      <StackLayout HorizontalOptions="Center" Grid.Row="2"   BackgroundColor="#e24a37" >
+        <Button   BorderColor="#e24a37" BackgroundColor="#e24a37" Grid.Row="4" Text="Считать QR" Command="{Binding GetQrCodeCommand}"/>
+      </StackLayout>
+   
+     <ActivityIndicator HorizontalOptions="Center" Grid.RowSpan="4"  VerticalOptions="Center" IsRunning="{Binding IsLoading,Mode=TwoWay}"/>
+  </Grid>
+ 
+   
+ 
+
+
+
 </ContentPage>
