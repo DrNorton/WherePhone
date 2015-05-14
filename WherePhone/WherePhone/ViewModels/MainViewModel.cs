@@ -19,9 +19,11 @@ namespace WherePhone.ViewModels
         private readonly IApiFacade _apiFacade;
         private string _deviceId;
         private Phone _device;
+        private Borrower _user;
         private string _model;
         private Platform _platform;
         private string _version;
+        private DateTime _when;
 
         public  INavigation Navigation { get; set; }
 
@@ -49,8 +51,14 @@ namespace WherePhone.ViewModels
                 if (_device == null)
                 {
                     //Если девайс не найден, то регистрируем его
-                    _device = await _apiFacade.AddPhone(new Phone() {Name = _model,Platform = _platform.ToString(),Udid = _deviceId});
+                    Device = await _apiFacade.AddPhone(new Phone() {Name = _model,Platform = _platform.ToString(),Udid = _deviceId});
                 }
+            }
+            else
+            {
+                Device = borrow.Phone;
+                User = borrow.Borrower;
+                When=borrow.When;
             }
         }
         public ICommand GoToAllDevicesCommand
@@ -100,6 +108,36 @@ namespace WherePhone.ViewModels
             {
                 _platform = value;
                 base.OnPropertyChanged("Platform");
+            }
+        }
+
+        public Phone Device
+        {
+            get { return _device; }
+            set
+            {
+                _device = value;
+                base.OnPropertyChanged("Device");
+            }
+        }
+
+        public Borrower User
+        {
+            get { return _user; }
+            set
+            {
+                _user = value;
+                base.OnPropertyChanged("User");
+            }
+        }
+
+        public DateTime When
+        {
+            get { return _when; }
+            set
+            {
+                _when = value;
+                base.OnPropertyChanged("When");
             }
         }
     }

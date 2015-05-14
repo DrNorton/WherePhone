@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using RestSharp.Portable;
 using RestSharp.Portable.Deserializers;
@@ -12,22 +13,28 @@ namespace WherePhone.Api.Executer
 {
     public class ApiExecuter : IApiExecuter
     {
-        private RestClient _restClient;
+       
 
         public ApiExecuter(IApiSettings apiSettings)
         {
-            _restClient = new RestSharp.Portable.RestClient();
-            _restClient.AddHandler("application/json", new JsonDeserializer());
+            
        
         }
         public async Task<T> Execute<T>(IRequest request)
         {
+            var restClient = new RestSharp.Portable.RestClient();
+            restClient.AddHandler("application/json", new JsonDeserializer());
+            restClient.BaseUrl = new Uri(request.BaseUrl);
+
+
             var restRequest = CreateRequest(request);
-            var uri=_restClient.BuildUri(restRequest);
+            var uri = restClient.BuildUri(restRequest);
             Debug.WriteLine(uri);
             try
             {
-                    var response = await _restClient.Execute<ApiResponse<T>>(restRequest);
+                var response = await restClient.Execute<ApiResponse<T>>(restRequest);
+                var bytes = response.RawBytes;
+                var str = Encoding.UTF8.GetString(bytes, 0, bytes.Length);
                     var data = response.Data;
                     if (data.ErrorCode == 0)
                     {
@@ -81,8 +88,9 @@ namespace WherePhone.Api.Executer
             var url = String.IsNullOrEmpty(request.Controller)
                 ? request.MethodName
                 : String.Format("{0}/{1}", request.Controller, request.MethodName);
-            _restClient.BaseUrl = new Uri(request.BaseUrl);
+           
             var restRequest = new RestRequest(url, request.Type);
+        
             return restRequest;
         }
       
