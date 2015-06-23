@@ -9,18 +9,28 @@ namespace WherePhone.Api.Models
 {
     public class User
     {
-        [JsonProperty("commonName")]
-        public string CommonName { get; set; }
-          [JsonProperty("id")]
-        public int Id { get; set; }
-         [JsonProperty("firstName")]
+        public long Id { get; set; }
         public string FirstName { get; set; }
-       [JsonProperty("lastName")]
+        public string MiddleName { get; set; }
         public string LastName { get; set; }
-          [JsonProperty("image")]
-        public string Image { get; set; }
-
-        [JsonProperty("mail")]
+        public string PhotoUrl { get; set; }
+        public string Room { get; set; }
         public string Email { get; set; }
+        public string Skype { get; set; }
+        public string Phone { get; set; }
+
+        [JsonIgnore]
+        public string Fio
+        {
+            get
+            {
+                var str = new StringBuilder(FirstName);
+                str.Append(" ");
+                str.Append(MiddleName);
+                str.Append(" ");
+                str.Append(LastName);
+                return str.ToString();
+            }
+        }
     }
 }

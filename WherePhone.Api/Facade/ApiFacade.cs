@@ -24,59 +24,65 @@ namespace WherePhone.Api.Facade
    
         }
 
-        public Task<List<Phone>> GetPhoneList()
+        public Task<List<Device>> GetPhoneList()
         {
-            var getDeviceListRequest = new GetDeviceListRequest();
+            var getDeviceListRequest = new GetAllDevicesRequest();
             getDeviceListRequest.BaseUrl = _apiSettings.BaseUrl;
-            return ExecuteWithErrorHandling<List<Phone>>(getDeviceListRequest);
+            return ExecuteWithErrorHandling<List<Device>>(getDeviceListRequest);
         }
 
-        public async Task<Phone> GetPhone(string id)
+        public async Task<Device> GetPhone(string id)
         {
             var getDeviceRequest = new GetDeviceRequest(id);
             getDeviceRequest.BaseUrl = _apiSettings.BaseUrl;
-            var phones= await ExecuteWithErrorHandling<List<Phone>>(getDeviceRequest);
-            if (phones == null) return null;
-            return phones.FirstOrDefault();
+            var phones= await ExecuteWithErrorHandling<Device>(getDeviceRequest);
+            return phones;
         }
 
-        public async Task<Phone> AddPhone(Phone newPhone)
+        public async Task<object> RegisterPhone(Device newDevice)
         {
-            var addPhoneRequest = new AddPhoneRequest(newPhone);
+            var addPhoneRequest = new RegisterPhoneRequest(newDevice);
             addPhoneRequest.BaseUrl = _apiSettings.BaseUrl;
-            var result = await ExecuteWithErrorHandling<Phone>(addPhoneRequest);
+            var result = await ExecuteWithErrorHandling<Device>(addPhoneRequest);
             return result;
         }
 
-        public async Task<Phone> DeletePhone(Phone deletedPhone)
+        public async Task<Device> DeletePhone(Device deletedDevice)
         {
-            var deletePhoneRequest = new DeletePhoneRequest(deletedPhone.Udid);
+            var deletePhoneRequest = new DeletePhoneRequest(deletedDevice.Guid);
             deletePhoneRequest.BaseUrl = _apiSettings.BaseUrl;
-            var result = await ExecuteWithErrorHandling<Phone>(deletePhoneRequest);
+            var result = await ExecuteWithErrorHandling<Device>(deletePhoneRequest);
             return result;
         }
 
         public Task<List<User>> GetUsers()
         {
             var getUsersRequest = new GetUsersRequest();
-            getUsersRequest.BaseUrl = _apiSettings.UserApiUrl;
+            getUsersRequest.BaseUrl = _apiSettings.BaseUrl;
             return ExecuteWithErrorHandling<List<User>>(getUsersRequest);
         }
 
-        public Task<List<BorrowTicket>> GetBorrowTickets()
+        public Task<object> AddBorrow(AddBorrow borrow)
         {
-            var borrowListRequest = new GetBorrowListRequest();
-            borrowListRequest.BaseUrl = _apiSettings.BaseUrl;
-            return ExecuteWithErrorHandling<List<BorrowTicket>>(borrowListRequest);
+            var addBorrowRequest = new AddBorrowRequest(borrow);
+            addBorrowRequest.BaseUrl = _apiSettings.BaseUrl;
+            return ExecuteWithErrorHandling<object>(addBorrowRequest);
         }
 
-        public async Task<BorrowTicket> GetBorrow(string id)
+        public Task<Borrow> GetCurrentBorrow(string deviceId)
         {
-            var getBorrowRequest = new GetBorrowRequest(id);
+            var borrowListRequest = new GetCurrentBorrow(deviceId);
+            borrowListRequest.BaseUrl = _apiSettings.BaseUrl;
+            return ExecuteWithErrorHandling<Borrow>(borrowListRequest);
+        }
+
+        public async Task<List<Borrow>> GetBorrows(string deviceId)
+        {
+            var getBorrowRequest = new GetBorrowsByGuid(deviceId);
             getBorrowRequest.BaseUrl = _apiSettings.BaseUrl;
-            var phones = await ExecuteWithErrorHandling<List<BorrowTicket>>(getBorrowRequest);
+            var phones = await ExecuteWithErrorHandling<List<Borrow>>(getBorrowRequest);
             if (phones == null) return null;
-            return phones.FirstOrDefault();
+            return phones;
         }
 
         private Task<T> ExecuteWithErrorHandling<T>(IRequest request)

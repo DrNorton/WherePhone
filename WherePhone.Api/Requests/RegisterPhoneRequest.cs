@@ -4,13 +4,14 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using WherePhone.Api.Models;
+using WherePhone.Api.Models.Base;
 using WherePhone.Api.Requests.Base;
 
 namespace WherePhone.Api.Requests
 {
-    public class GetDeviceRequest :BaseParamRequest
+    public class RegisterPhoneRequest:BaseParamRequest
     {
-
         public override string Controller
         {
             get { return "device"; }
@@ -18,13 +19,14 @@ namespace WherePhone.Api.Requests
 
         public override string MethodName
         {
-            get { return ""; }
+            get { return "register"; }
         }
 
-        public GetDeviceRequest(string phoneId)
+        public RegisterPhoneRequest(Device device)
         {
-            base.Params.Add("guid", phoneId);
-            base.Type=HttpMethod.Get;
+            base.Params = device.ToDictionary();
+            base.Type=HttpMethod.Post;
         }
+
     }
 }

@@ -16,12 +16,12 @@
     
      <StackLayout BackgroundColor="#edecea" Grid.Row="1" VerticalOptions="Fill" HorizontalOptions="Fill">
          
-     <ListView ItemsSource="{Binding Users}" BackgroundColor="White" >
+     <ListView SelectedItem="{Binding SelectedUser,Mode=TwoWay}" ItemsSource="{Binding Users}" BackgroundColor="White" >
       <ListView.ItemTemplate>
         <DataTemplate>
    
           <TextCell  TextColor="Black" DetailColor="#e24a37"
-           Text="{Binding CommonName}"
+           Text="{Binding Fio}"
            Detail="{Binding Email}">
           </TextCell>
                 

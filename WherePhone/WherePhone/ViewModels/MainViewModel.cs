@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using DeviceInfo.Plugin;
 using DeviceInfo.Plugin.Abstractions;
+using WherePhone.Api;
 using WherePhone.Api.Facade;
 using WherePhone.Api.Models;
 using WherePhone.Views;
 using Xamarin.Forms;
+using Device = WherePhone.Api.Models.Device;
 
 namespace WherePhone.ViewModels
 {
@@ -18,13 +20,13 @@ namespace WherePhone.ViewModels
     {
         private readonly IApiFacade _apiFacade;
         private string _deviceId;
-        private Phone _device;
-        private Borrower _user;
+        private Device _device;
+        private User _user;
         private string _model;
         private Platform _platform;
         private string _version;
         private DateTime _when;
-
+     
         public  INavigation Navigation { get; set; }
 
 
@@ -41,26 +43,33 @@ namespace WherePhone.ViewModels
 
         public async void GetDeviceInfo()
         {
-
-           var borrow=await _apiFacade.GetBorrow(_deviceId);
-            if (borrow == null)
+            IsLoading = true;
+            var phone = await _apiFacade.GetPhone(_deviceId);
+            if (phone == null)
             {
                 //Значит телефон либо ничей, либо не зарегистрирован
                 //проверяем регистрацию
-                _device=await _apiFacade.GetPhone(_deviceId);
+                _device = await _apiFacade.GetPhone(_deviceId);
                 if (_device == null)
                 {
                     //Если девайс не найден, то регистрируем его
-                    Device = await _apiFacade.AddPhone(new Phone() {Name = _model,Platform = _platform.ToString(),Udid = _deviceId});
+                    var device = new Device() { Name = _model, Platform = _platform.ToString(), Guid = _deviceId };
+                    await _apiFacade.RegisterPhone(device);
+                    Device = device;
+
                 }
+                User = new User() { FirstName = "Телефон ничей" };
+              
             }
             else
             {
-                Device = borrow.Phone;
-                User = borrow.Borrower;
-                When=borrow.When;
+                Device = phone;
+                User = phone.CurrentUser;
+                When = phone.BorrowTime;
             }
+            IsLoading = false;
         }
+
         public ICommand GoToAllDevicesCommand
         {
             get { return new Command(() => Navigation.PushAsync(IoC.Get<AllDevicesView>())); }
@@ -68,7 +77,16 @@ namespace WherePhone.ViewModels
 
         public ICommand GoToTakeMeCommand
         {
-            get { return new Command(() => Navigation.PushAsync(IoC.Get<TakeMeView>())); }
+            get
+            {
+               
+                return new Command(() =>
+                {
+                    var view = IoC.Get<TakeMeView>();
+                    view.DeviceId = _deviceId;
+                    Navigation.PushAsync(view);
+                });
+            }
         }
 
         public string DeviceId
@@ -111,7 +129,7 @@ namespace WherePhone.ViewModels
             }
         }
 
-        public Phone Device
+        public Device Device
         {
             get { return _device; }
             set
@@ -121,7 +139,7 @@ namespace WherePhone.ViewModels
             }
         }
 
-        public Borrower User
+        public User User
         {
             get { return _user; }
             set
@@ -140,5 +158,7 @@ namespace WherePhone.ViewModels
                 base.OnPropertyChanged("When");
             }
         }
+
+      
     }
 }

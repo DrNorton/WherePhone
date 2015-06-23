@@ -13,7 +13,7 @@ namespace WherePhone
         private Token _token;
         public string BaseUrl
         {
-            get { return "http://where-phone.appspot.com"; }
+            get { return "http://wherephone.azurewebsites.net/api"; }
         }
         public Api.Models.Token SavedToken
         {
@@ -22,9 +22,5 @@ namespace WherePhone
         }
 
 
-        public string UserApiUrl
-        {
-            get { return "http://10.3.2.6:82"; }
-        }
     }
 }

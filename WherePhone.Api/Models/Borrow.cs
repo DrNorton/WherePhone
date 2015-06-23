@@ -8,14 +8,15 @@ using Newtonsoft.Json.Converters;
 
 namespace WherePhone.Api.Models
 {
-    public class BorrowTicket
+    public class Borrow
     {
-        [JsonProperty("device")]
-        public Phone Phone { get; set; }
-        [JsonProperty("borrower")]
-        public Borrower Borrower { get; set; }
-        [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime When { get; set; }
+        public long Id { get; set; }
+        public System.DateTime Time { get; set; }
+        public string DeviceId { get; set; }
+        public string Description { get; set; }
+
+        public Device Device { get; set; }
+        public User User { get; set; }
     }
 
 

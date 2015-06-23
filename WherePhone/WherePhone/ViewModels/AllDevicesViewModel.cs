@@ -12,9 +12,9 @@ namespace WherePhone.ViewModels
     public class AllDevicesViewModel : BaseViewModel
     {
         private readonly IApiFacade _apiFacade;
-        private List<Phone> _phones;
+        private List<Device> _phones;
 
-        public List<Phone> Phones
+        public List<Device> Phones
         {
             get { return _phones; }
             set
@@ -35,9 +35,9 @@ namespace WherePhone.ViewModels
            Phones=await _apiFacade.GetPhoneList();
             foreach (var phone in Phones)
             {
-                if (String.IsNullOrEmpty(phone.Image))
+                if (String.IsNullOrEmpty(phone.ImageUrl))
                 {
-                    phone.Image = @"http://sakha.today/wp-content/uploads/2014/10/3qcnphhuwfc_41.jpg";
+                    phone.ImageUrl = @"http://sakha.today/wp-content/uploads/2014/10/3qcnphhuwfc_41.jpg";
                 }
             }
         }

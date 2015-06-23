@@ -4,26 +4,28 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using WherePhone.Api.Models;
+using WherePhone.Api.Models.Base;
 using WherePhone.Api.Requests.Base;
 
 namespace WherePhone.Api.Requests
 {
-    public class GetBorrowRequest:BaseParamRequest
+    public class AddBorrowRequest : BaseParamRequest
     {
         public override string Controller
         {
-            get { return "borrowing"; }
+            get { return "borrow"; }
         }
 
         public override string MethodName
         {
-            get { return "list"; }
+            get { return "addborrow"; }
         }
 
-        public GetBorrowRequest(string phoneId)
+        public AddBorrowRequest(AddBorrow borrow)
         {
-            base.Params.Add("udid", phoneId);
-            base.Type = HttpMethod.Post;
+            base.Params = borrow.ToDictionary();
+            base.Type=HttpMethod.Post;
         }
     }
 }

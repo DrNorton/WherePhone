@@ -25,7 +25,7 @@ namespace WherePhone.Api.Requests.Base
        public Dictionary<string, object> Params
        {
             get { return _params; }
-           set { _params = value; }
+            set { _params = value; }
        }
 
 

@@ -2,11 +2,17 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WherePhone.Views.MainView">
-  <Grid  BackgroundColor="#edecea">
+<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="#edecea"> 
+
+  <Grid.RowDefinitions>
+    <RowDefinition/>
+    <RowDefinition/>
+  </Grid.RowDefinitions>
+  <Grid Grid.Row="0" IsVisible="{Binding IsLoadingReverse,Mode=TwoWay}" BackgroundColor="#edecea">
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto"/>
-      <RowDefinition/>
-      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+     
     </Grid.RowDefinitions>
     
     <StackLayout   BackgroundColor="#e24a37" Padding="10" Grid.Row="0">
@@ -43,7 +49,7 @@
         <StackLayout BackgroundColor="White" >
           <StackLayout Padding="20">
             <Label  TextColor="#5f5e5c" Text="Текущий владелец"  FontSize="20"    />
-            <Label TextColor="#e54126"  Text="{Binding User.Name,Mode=TwoWay}" FontSize="20"   />
+            <Label TextColor="#e54126"  Text="{Binding User.Fio,Mode=TwoWay}" FontSize="20"   />
           <Label  TextColor="#5f5e5c" Text="Когда взял"  FontSize="20"    />
             <Label TextColor="#e54126"  Text="{Binding When,Mode=TwoWay}" FontSize="20"   />
         
@@ -54,8 +60,10 @@
 
     </StackLayout>
    
+
+  </Grid>
     
-    <StackLayout  Grid.Row="2" VerticalOptions="EndAndExpand" HorizontalOptions="Center" Orientation="Horizontal">
+  <StackLayout  Grid.Row="1" VerticalOptions="EndAndExpand" HorizontalOptions="Center" Orientation="Horizontal">
       <StackLayout   HorizontalOptions="CenterAndExpand"  BackgroundColor="#e24a37" >
         <Button  BorderColor="#e24a37" BackgroundColor="#e24a37"   Text="Взять меня" Command="{Binding GoToTakeMeCommand}"/>
       </StackLayout>
@@ -64,7 +72,7 @@
       </StackLayout>
 
     </StackLayout>
-
-</Grid>
+  <ActivityIndicator Grid.Row="0"  Color="Black"  IsRunning="{Binding IsLoading,Mode=TwoWay}" Grid.RowSpan="2"/>
+ </Grid>
 
 </ContentPage>

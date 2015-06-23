@@ -18,14 +18,12 @@ namespace WherePhone.Api.Requests
 
         public override string MethodName
         {
-            get { return "delete"; }
+            get { return "unregister"; }
         }
 
-        public DeletePhoneRequest(string uid)
+        public DeletePhoneRequest(string guid)
         {
-            var obj = new JObject();
-            obj.Add("udid",uid);
-            base.Params.Add("device",obj);
+            base.Params.Add("Guid", guid);
             base.Type=HttpMethod.Post;
         }
     }

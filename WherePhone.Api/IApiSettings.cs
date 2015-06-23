@@ -6,7 +6,7 @@ namespace WherePhone.Api
     {
         string BaseUrl { get; }
 
-        string UserApiUrl { get; }
+      
         Token SavedToken { get; set; }
      
     }

@@ -4,7 +4,7 @@ using WherePhone.Api.Requests.Base;
 
 namespace WherePhone.Api.Requests
 {
-    public class GetDeviceListRequest : BaseParamRequest
+    public class GetAllDevicesRequest : BaseParamRequest
     {
         public override string Controller
         {
@@ -13,12 +13,12 @@ namespace WherePhone.Api.Requests
         }
         public override string MethodName
         {
-            get { return "list"; }
+            get { return ""; }
         }
 
-        public GetDeviceListRequest()
+        public GetAllDevicesRequest()
         {
-           
+            base.Type = HttpMethod.Get;
         }
     }
 }

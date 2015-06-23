@@ -85,9 +85,23 @@ namespace WherePhone.Api.Executer
 
         private  RestRequest CreateAndPrepareByUrl(IRequest request)
         {
-            var url = String.IsNullOrEmpty(request.Controller)
-                ? request.MethodName
-                : String.Format("{0}/{1}", request.Controller, request.MethodName);
+            string url;
+            if(String.IsNullOrEmpty(request.Controller))
+            {
+                url = request.MethodName;
+            }
+            else
+            {
+                if (String.IsNullOrEmpty(request.MethodName))
+                {
+                    url = request.Controller;
+                }
+                else
+                {
+                    url = String.Format("{0}/{1}", request.Controller, request.MethodName);
+                }
+            }
+           
            
             var restRequest = new RestRequest(url, request.Type);
         

@@ -20,12 +20,12 @@ namespace WherePhone.Api.Requests
 
         public string Controller
         {
-            get { return "api"; }
+            get { return "user"; }
         }
 
         public string MethodName
         {
-            get { return "users"; }
+            get { return ""; }
         }
 
         public System.Net.Http.HttpMethod Type

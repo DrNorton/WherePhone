@@ -22,7 +22,9 @@ namespace WherePhone.ViewModels
       
         private List<User> _usersBeforeFilter;
         private ObservableCollection<User> _users;
+        private User _selectedUser;
         private string _pattern;
+        public string DeviceId { get; set; }
 
         public TakeMeViewModel(IApiFacade apiFacade)
         {
@@ -52,7 +54,7 @@ namespace WherePhone.ViewModels
                 });
             }
         }
-
+        
      
 
       
@@ -88,10 +90,31 @@ namespace WherePhone.ViewModels
             }
         }
 
+        public User SelectedUser
+        {
+            get { return _selectedUser; }
+            set
+            {
+                _selectedUser = value;
+                if (value != null)
+                {
+                    BorrowPhone(value);
+                }
+            
+                base.OnPropertyChanged("SelectedUser");
+            }
+        }
+
+        private async void BorrowPhone(User user)
+        {
+          var ds= await _apiFacade.AddBorrow(new AddBorrow(){Description = "",UserId = user.Id,DeviceId = DeviceId});
+            Debug.WriteLine(ds);
+        }
+
         private void FilterCollection(string value)
         {
             IsLoading = true;
-            Users =new ObservableCollection<User>(_usersBeforeFilter.Where(x => x.CommonName.ToLower().Contains(value.ToLower())));
+            Users =new ObservableCollection<User>(_usersBeforeFilter.Where(x => x.Fio.ToLower().Contains(value.ToLower())));
             IsLoading = false;
         }
 

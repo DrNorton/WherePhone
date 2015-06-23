@@ -7,12 +7,13 @@ namespace WherePhone.Api.Facade
 {
     public interface IApiFacade
     {
-        Task<List<Phone>> GetPhoneList();
+        Task<List<Device>> GetPhoneList();
         Task<List<User>> GetUsers();
-        Task<Phone> GetPhone(string id);
-        Task<List<BorrowTicket>> GetBorrowTickets();
-        Task<BorrowTicket> GetBorrow(string id);
-        Task<Phone> AddPhone(Phone newPhone);
-        Task<Phone> DeletePhone(Phone deletedPhone);
+        Task<Device> GetPhone(string id);
+        Task<Borrow> GetCurrentBorrow(string deviceId);
+        Task<List<Borrow>> GetBorrows(string deviceId);
+        Task<object> RegisterPhone(Device newDevice);
+        Task<Device> DeletePhone(Device deletedDevice);
+        Task<object> AddBorrow(AddBorrow borrow);
     }
 }
