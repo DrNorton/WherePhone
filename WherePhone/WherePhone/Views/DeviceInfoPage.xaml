@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WherePhone.Views.DeviceInfoPage">
+
+  <StackLayout Padding="0,10,0,0" Grid.Row="3"   Orientation="Vertical" VerticalOptions="Start">
+    <StackLayout BackgroundColor="White" >
+      <StackLayout Padding="20">
+        <Label  TextColor="#5f5e5c" FontAttributes="Bold" Text="Модель устройства:"  FontSize="20"    />
+        <Label TextColor="#e54126"  Text="{Binding Model,Mode=TwoWay}" FontSize="20"   />
+      </StackLayout>
+    </StackLayout>
+    <StackLayout Padding="20"  BackgroundColor="White" >
+      <Label  TextColor="#5f5e5c" FontAttributes="Bold" Text="Операционная система:"  FontSize="20"/>
+      <StackLayout Orientation="Horizontal">
+        <Label TextColor="#e54126"  Text="{Binding Platform,Mode=TwoWay}" FontSize="20"   />
+        <Label TextColor="#e54126"  Text="{Binding Version,Mode=TwoWay}" FontSize="20"   />
+      </StackLayout>
+    </StackLayout>
+  </StackLayout>
+</ContentPage>

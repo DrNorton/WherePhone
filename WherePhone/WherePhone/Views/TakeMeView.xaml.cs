@@ -26,5 +26,10 @@ namespace WherePhone.Views
             this.BindingContext = viewModel;
            
         }
+
+        public TakeMeView()
+        {
+            
+        }
     }
 }

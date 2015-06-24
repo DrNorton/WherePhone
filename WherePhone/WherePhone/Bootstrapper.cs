@@ -16,8 +16,6 @@ namespace WherePhone
         {
             var builder = new ContainerBuilder();
             builder.RegisterModule<Installer>();
-
-
             var container = builder.Build();
             IoC.Init(container);
             var page = container.Resolve<MainView>();

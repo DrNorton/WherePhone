@@ -6,13 +6,14 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using ImageCircle.Forms.Plugin.Droid;
 using WherePhone.Core;
 using Xamarin.Forms.Platform.Android;
 
 namespace WherePhone.Droid
 {
     //https://github.com/aritchie/barcodes/tree/master/src/Samples/Samples.iOS
-    [Activity(Label = "Silkweb.Mobile.MountainForecast.Android.Android", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "Silkweb.Mobile.MountainForecast.Android.Android", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, Icon="@android:color/transparent")]
     public class MainActivity : AndroidActivity
     {
         protected override void OnCreate(Bundle bundle)
@@ -20,6 +21,7 @@ namespace WherePhone.Droid
             base.OnCreate(bundle);
             BarCodes.Init(this);
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            ImageCircleRenderer.Init();
             LoadApplication(new WherePhoneApp());
         }
     }

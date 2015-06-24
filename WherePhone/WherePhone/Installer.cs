@@ -40,6 +40,7 @@ namespace WherePhone
             builder.RegisterType<MainViewModel>().AsSelf();
             builder.RegisterType<AllDevicesViewModel>().AsSelf();
             builder.RegisterType<TakeMeViewModel>().AsSelf();
+            builder.RegisterType<GetPhoneViewModel>().AsSelf();
 
             builder.RegisterType<MainView>()
               .AsSelf()
@@ -52,6 +53,10 @@ namespace WherePhone
             builder.RegisterType<TakeMeView>()
              .AsSelf()
              .SingleInstance();
+
+            builder.RegisterType<GetPhoneView>()
+           .AsSelf()
+           .SingleInstance();
         }
     }
 }

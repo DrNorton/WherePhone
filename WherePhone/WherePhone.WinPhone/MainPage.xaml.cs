@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using Acr.BarCodes;
+using ImageCircle.Forms.Plugin.WindowsPhone;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
@@ -19,6 +20,7 @@ namespace WherePhone.WinPhone
             SupportedOrientations = SupportedPageOrientation.PortraitOrLandscape;
             BarCodes.Init();
             global::Xamarin.Forms.Forms.Init();
+            ImageCircleRenderer.Init();
             LoadApplication(new WherePhoneApp());
         }
     }

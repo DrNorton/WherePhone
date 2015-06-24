@@ -26,6 +26,8 @@ namespace WherePhone.ViewModels
         private Platform _platform;
         private string _version;
         private DateTime _when;
+        private List<MenuItem> _menuItems;
+        private MenuItem _selectedMenu;
      
         public  INavigation Navigation { get; set; }
 
@@ -38,8 +40,11 @@ namespace WherePhone.ViewModels
             _model = generator.DeviceModel();
             _platform = generator.Platform();
             _version = generator.PlatformVersion();
+            MenuItems = new List<MenuItem>() { new MenuItem() {Id = 0,Description = "узнать у кого телефон", Name = "У кого телефон" },new MenuItem(){Id=1,Description = "О телефоне",Name = "информация о телефоне"} };
             GetDeviceInfo();
         }
+
+        
 
         public async void GetDeviceInfo()
         {
@@ -159,6 +164,53 @@ namespace WherePhone.ViewModels
             }
         }
 
-      
+        public List<MenuItem> MenuItems
+        {
+            get { return _menuItems; }
+            set
+            {
+                _menuItems = value;
+                base.OnPropertyChanged("MenuItems");
+            }
+        }
+
+        public MenuItem SelectedMenu
+        {
+            get { return _selectedMenu; }
+            set
+            {
+                _selectedMenu = value;
+                if (value != null)
+                {
+                    GoTo(value.Id);
+                }
+            
+                
+                base.OnPropertyChanged("SelectedMenu");
+            }
+        }
+
+        private void GoTo(int id)
+        {
+            switch (id)
+            {
+                case 0:
+                    Navigation.PushAsync(IoC.Get<GetPhoneView>());
+                    break;
+
+                case 1:
+                    Navigation.PushAsync(IoC.Get<TakeMeView>());
+                    break;
+            }
+           
+        }
+    }
+
+    public class MenuItem
+    {
+        public string Name { get; set; }
+        public string Description { get; set; }
+
+        public int Id { get; set; }
     }
 }

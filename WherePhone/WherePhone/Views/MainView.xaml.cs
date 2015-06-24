@@ -8,13 +8,17 @@ using Xamarin.Forms;
 
 namespace WherePhone.Views
 {
-    public partial class MainView : ContentPage
+    public partial class MainView : MasterDetailPage
     {
         public MainView(MainViewModel viewModel)
         {
             InitializeComponent();
             BindingContext = viewModel;
+           // menuPage.Menu.ItemSelected += (sender, e) => NavigateTo(e.SelectedItem as MenuItem);
             viewModel.Navigation = this.Navigation;
+            Detail=new GetPhoneView();
+
         }
+
     }
 }
