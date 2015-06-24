@@ -1,9 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WherePhone.Views.DeviceInfoPage">
+             x:Class="WherePhone.Views.DeviceInfoView" BackgroundColor="#edecea">
 
-  <StackLayout Padding="0,10,0,0" Grid.Row="3"   Orientation="Vertical" VerticalOptions="Start">
+  <StackLayout Padding="0,0,0,0" Grid.Row="3"   Orientation="Vertical" VerticalOptions="Start">
+    <StackLayout   BackgroundColor="#e24a37" Padding="10" Grid.Row="0">
+      <Label   Text="Информация о телефоне" FontSize="30"  VerticalOptions="CenterAndExpand" HorizontalOptions="Center" />
+    </StackLayout>
     <StackLayout BackgroundColor="White" >
       <StackLayout Padding="20">
         <Label  TextColor="#5f5e5c" FontAttributes="Bold" Text="Модель устройства:"  FontSize="20"    />

@@ -16,9 +16,10 @@ namespace WherePhone.Views
             BindingContext = viewModel;
            // menuPage.Menu.ItemSelected += (sender, e) => NavigateTo(e.SelectedItem as MenuItem);
             viewModel.Navigation = this.Navigation;
-            Detail=new GetPhoneView();
+            Detail = IoC.Get<PhoneOwnerView>();
 
         }
+
 
     }
 }

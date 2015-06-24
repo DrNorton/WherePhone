@@ -35,28 +35,20 @@ namespace WherePhone
                 .As<IApiFacade>()
                 .SingleInstance();
 
-         
 
-            builder.RegisterType<MainViewModel>().AsSelf();
-            builder.RegisterType<AllDevicesViewModel>().AsSelf();
-            builder.RegisterType<TakeMeViewModel>().AsSelf();
-            builder.RegisterType<GetPhoneViewModel>().AsSelf();
 
-            builder.RegisterType<MainView>()
-              .AsSelf()
-              .SingleInstance();
+            builder.RegisterType<MainViewModel>().InstancePerDependency();
+            builder.RegisterType<AllDevicesViewModel>().InstancePerDependency();
+            builder.RegisterType<TakeMeViewModel>().InstancePerDependency();
+            builder.RegisterType<PhoneOwnerViewModel>().InstancePerDependency();
+            builder.RegisterType<DeviceInfoViewModel>().InstancePerDependency();
+            builder.RegisterType<PhoneOwnerViewModel>().InstancePerDependency();
 
-            builder.RegisterType<AllDevicesView>()
-               .AsSelf()
-               .SingleInstance();
-
-            builder.RegisterType<TakeMeView>()
-             .AsSelf()
-             .SingleInstance();
-
-            builder.RegisterType<GetPhoneView>()
-           .AsSelf()
-           .SingleInstance();
+            builder.RegisterType<MainView>().InstancePerDependency();
+            builder.RegisterType<AllDevicesView>().InstancePerDependency();
+            builder.RegisterType<TakeMeView>().InstancePerDependency();
+            builder.RegisterType<DeviceInfoView>().InstancePerDependency();
+            builder.RegisterType<PhoneOwnerView>().InstancePerDependency();
         }
     }
 }

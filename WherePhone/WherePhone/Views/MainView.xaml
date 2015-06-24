@@ -9,20 +9,18 @@
 
 
   <MasterDetailPage.Master>
-    <ContentPage  Padding="5, 25" Title="Vfcnth" >
-    <ListView ItemsSource="{Binding MenuItems,Mode=TwoWay}" SelectedItem="{Binding SelectedMenu,Mode=TwoWay}">
+    <ContentPage BackgroundColor="#edecea"  Padding="5, 25" Title="Vfcnth" >
+    <ListView  ItemsSource="{Binding MenuItems,Mode=TwoWay}" SelectedItem="{Binding SelectedMenu,Mode=TwoWay}">
       <ListView.ItemTemplate>
         <DataTemplate>
-          <TextCell Text="{Binding Name}" Detail="{Binding Description}"> </TextCell>
+          <TextCell TextColor="Black" Text="{Binding Name}" Detail="{Binding Description}"> </TextCell>
         </DataTemplate>
       </ListView.ItemTemplate> 
     </ListView>
     </ContentPage>
    
   </MasterDetailPage.Master>
-  <MasterDetailPage.Detail>
-    <views:GetPhoneView/>
-  </MasterDetailPage.Detail>
+  
 
 
    

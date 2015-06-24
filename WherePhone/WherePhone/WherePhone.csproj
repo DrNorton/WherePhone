@@ -43,13 +43,14 @@
     <Compile Include="Installer.cs" />
     <Compile Include="ViewModels\AllDevicesViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="ViewModels\GetPhoneViewModel.cs" />
+    <Compile Include="ViewModels\DeviceInfoViewModel.cs" />
+    <Compile Include="ViewModels\PhoneOwnerViewModel.cs" />
     <Compile Include="ViewModels\TakeMeViewModel.cs" />
     <Compile Include="Views\AllDevicesView.xaml.cs">
       <DependentUpon>AllDevicesView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\DeviceInfoPage.xaml.cs">
-      <DependentUpon>DeviceInfoPage.xaml</DependentUpon>
+    <Compile Include="Views\DeviceInfoView.xaml.cs">
+      <DependentUpon>DeviceInfoView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TakeMeView.xaml.cs">
       <DependentUpon>TakeMeView.xaml</DependentUpon>
@@ -57,8 +58,8 @@
     <Compile Include="Views\Test2.xaml.cs">
       <DependentUpon>Test2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\GetPhoneView.xaml.cs">
-      <DependentUpon>GetPhoneView.xaml</DependentUpon>
+    <Compile Include="Views\PhoneOwnerView.xaml.cs">
+      <DependentUpon>PhoneOwnerView.xaml</DependentUpon>
     </Compile>
     <Compile Include="WherePhoneApp.xaml.cs">
       <DependentUpon>WherePhoneApp.xaml</DependentUpon>
@@ -174,7 +175,7 @@
     <Content Include="DeviceInfoReadme.txt" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\GetPhoneView.xaml">
+    <EmbeddedResource Include="Views\PhoneOwnerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -186,7 +187,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\DeviceInfoPage.xaml">
+    <EmbeddedResource Include="Views\DeviceInfoView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
