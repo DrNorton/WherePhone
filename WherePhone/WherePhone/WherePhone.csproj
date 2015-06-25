@@ -41,22 +41,23 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="IAppIdGenerator.cs" />
     <Compile Include="Installer.cs" />
-    <Compile Include="ViewModels\AllDevicesViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\DeviceInfoViewModel.cs" />
+    <Compile Include="ViewModels\PhoneLocatorDetailViewModel.cs" />
+    <Compile Include="ViewModels\PhoneLocatorViewModel.cs" />
     <Compile Include="ViewModels\PhoneOwnerViewModel.cs" />
     <Compile Include="ViewModels\TakeMeViewModel.cs" />
-    <Compile Include="Views\AllDevicesView.xaml.cs">
-      <DependentUpon>AllDevicesView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\DeviceInfoView.xaml.cs">
       <DependentUpon>DeviceInfoView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PhoneLocatorDetailView.xaml.cs">
+      <DependentUpon>PhoneLocatorDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PhoneLocatorView.xaml.cs">
+      <DependentUpon>PhoneLocatorView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\TakeMeView.xaml.cs">
       <DependentUpon>TakeMeView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Test2.xaml.cs">
-      <DependentUpon>Test2.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PhoneOwnerView.xaml.cs">
       <DependentUpon>PhoneOwnerView.xaml</DependentUpon>
@@ -157,18 +158,13 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\AllDevicesView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Views\TakeMeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Assets\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -181,13 +177,19 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Test2.xaml">
+    <EmbeddedResource Include="Views\DeviceInfoView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\DeviceInfoView.xaml">
+    <EmbeddedResource Include="Views\PhoneLocatorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\PhoneLocatorDetailView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

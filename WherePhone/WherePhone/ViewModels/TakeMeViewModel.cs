@@ -10,6 +10,7 @@ using System.Windows.Input;
 using Acr.BarCodes;
 using WherePhone.Api.Facade;
 using WherePhone.Api.Models;
+using WherePhone.Views;
 using Xamarin.Forms;
 
 namespace WherePhone.ViewModels
@@ -17,6 +18,7 @@ namespace WherePhone.ViewModels
     public class TakeMeViewModel :BaseViewModel
     {
         private readonly IApiFacade _apiFacade;
+        private readonly INavigation _navigation;
 
         private bool _isLoading;
       
@@ -24,11 +26,14 @@ namespace WherePhone.ViewModels
         private ObservableCollection<User> _users;
         private User _selectedUser;
         private string _pattern;
-        public string DeviceId { get; set; }
+        private string _deviceId;
 
-        public TakeMeViewModel(IApiFacade apiFacade)
+
+        public TakeMeViewModel(IApiFacade apiFacade,INavigation navigation,IAppIdGenerator generator)
         {
+            _deviceId = generator.Id();
             _apiFacade = apiFacade;
+            _navigation = navigation;
             _users = new ObservableCollection<User>();
             _usersBeforeFilter=new List<User>();
             GetPeoples();
@@ -107,8 +112,9 @@ namespace WherePhone.ViewModels
 
         private async void BorrowPhone(User user)
         {
-          var ds= await _apiFacade.AddBorrow(new AddBorrow(){Description = "",UserId = user.Id,DeviceId = DeviceId});
-            Debug.WriteLine(ds);
+          var ds= await _apiFacade.AddBorrow(new AddBorrow(){Description = "",UserId = user.Id,DeviceId = _deviceId});
+          await _navigation.PushAsync(IoC.Get<PhoneOwnerView>());
+
         }
 
         private void FilterCollection(string value)

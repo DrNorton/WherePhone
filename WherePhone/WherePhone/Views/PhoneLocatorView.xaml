@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WherePhone.Views.PhoneLocatorView" BackgroundColor="#edecea">
+<Grid BackgroundColor="#edecea">
+  <ListView  SelectedItem="{Binding SelectedPhone,Mode=TwoWay}" ItemsSource="{Binding PhonesGrouped}" IsGroupingEnabled="True"   GroupDisplayBinding="{Binding Key}" HasUnevenRows="True"
+               GroupShortNameBinding="{Binding Key}" VerticalOptions="Center" HorizontalOptions="Center">
+    <ListView.GroupHeaderTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <StackLayout
+              VerticalOptions="FillAndExpand"
+              Padding="10"
+              BackgroundColor="#e54126">
+            <Label
+                Text="{Binding Key}"
+                TextColor="White"
+                VerticalOptions="Center" />
+          </StackLayout>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.GroupHeaderTemplate>
+
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ImageCell
+          Text="{Binding Name}" TextColor="#5f5e5c"
+          Detail="{Binding Platform, StringFormat='{0}'}"
+          ImageSource="{Binding ImageUrl}">
+        </ImageCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </ListView>
+  <ActivityIndicator Grid.Row="0"  Color="Black" VerticalOptions="Center" HorizontalOptions="Center"   IsRunning="{Binding IsLoading,Mode=TwoWay}" Grid.RowSpan="1"/>
+</Grid>
+ 
+</ContentPage>

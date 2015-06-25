@@ -38,17 +38,19 @@ namespace WherePhone
 
 
             builder.RegisterType<MainViewModel>().InstancePerDependency();
-            builder.RegisterType<AllDevicesViewModel>().InstancePerDependency();
             builder.RegisterType<TakeMeViewModel>().InstancePerDependency();
             builder.RegisterType<PhoneOwnerViewModel>().InstancePerDependency();
             builder.RegisterType<DeviceInfoViewModel>().InstancePerDependency();
             builder.RegisterType<PhoneOwnerViewModel>().InstancePerDependency();
+            builder.RegisterType<PhoneLocatorViewModel>().InstancePerDependency();
+            builder.RegisterType<PhoneLocatorDetailViewModel>().InstancePerDependency();
 
             builder.RegisterType<MainView>().InstancePerDependency();
-            builder.RegisterType<AllDevicesView>().InstancePerDependency();
             builder.RegisterType<TakeMeView>().InstancePerDependency();
             builder.RegisterType<DeviceInfoView>().InstancePerDependency();
             builder.RegisterType<PhoneOwnerView>().InstancePerDependency();
+            builder.RegisterType<PhoneLocatorView>().InstancePerDependency();
+            builder.RegisterType<PhoneLocatorDetailView>().InstancePerDependency();
         }
     }
 }

@@ -28,9 +28,10 @@ namespace WherePhone.ViewModels
         public MainViewModel()
         {
          
-            MenuItems = new List<MenuItem>() { new MenuItem() {Action = "phone",Description = "узнать у кого телефон", Name = "У кого телефон" },
-                new MenuItem(){Action = "phoneInformation",Description = "О телефоне",Name = "информация о телефоне"},
-                 new MenuItem(){Action = "take",Description = "Взять телефон",Name = "взять телефон"}
+            MenuItems = new List<MenuItem>() { new MenuItem() {Action = "phone",Description = "узнать у кого телефон", Name = "Где телефон" },
+                 new MenuItem(){Action = "take",Description = "выбрав фамилию из списка",Name = "Взять телефон"},
+                 new MenuItem(){Action = "phoneInformation",Description = "информация о телефоне",Name = "О телефоне"},
+                 new MenuItem(){Action = "locator",Description = "поиск телефонов",Name = "Локатор телефонов"},
             };
             
         }
@@ -81,6 +82,10 @@ namespace WherePhone.ViewModels
 
                 case "take":
                     Navigation.PushAsync(IoC.Get<TakeMeView>());
+                    break;
+
+                case "locator":
+                    Navigation.PushAsync(IoC.Get<PhoneLocatorView>());
                     break;
             }
            

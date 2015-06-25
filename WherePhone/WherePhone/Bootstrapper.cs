@@ -20,6 +20,11 @@ namespace WherePhone
             IoC.Init(container);
             var page = container.Resolve<MainView>();
             app.MainPage = new NavigationPage(page);
+            var navigation = app.MainPage.Navigation;
+            var newBuilder = new ContainerBuilder();
+            newBuilder.Register(c => navigation).As<INavigation>();
+            newBuilder.Update(container);
+          
         }
     }
 
@@ -36,5 +41,7 @@ namespace WherePhone
         {
            return _container.Resolve<T>();
         }
+
+   
     }
 }

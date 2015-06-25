@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using Acr.BarCodes;
 using Foundation;
+using ImageCircle.Forms.Plugin.iOS;
 using UIKit;
 using WherePhone.Core;
 
@@ -23,8 +24,10 @@ namespace WherePhone.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            BarCodes.Init();
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
+            ImageCircleRenderer.Init();
 
             return base.FinishedLaunching(app, options);
         }

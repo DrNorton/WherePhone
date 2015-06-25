@@ -21,5 +21,9 @@ namespace WherePhone.Views
         }
 
 
+        private void ListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            this.IsPresented = false;
+        }
     }
 }

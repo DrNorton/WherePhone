@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             x:Class="WherePhone.Views.PhoneLocatorDetailView" BackgroundColor="White">
+ 
+  <Grid   VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  BackgroundColor="#edecea">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+
+    </Grid.RowDefinitions>
+    <StackLayout IsVisible="{Binding IsLoadingReverse,Mode=TwoWay}"  BackgroundColor="#e24a37" Padding="10" Grid.Row="0">
+      <Label   Text="Кто взял телефон?" FontSize="30"  VerticalOptions="CenterAndExpand" HorizontalOptions="Center" />
+    </StackLayout>
+    <Grid Grid.Row="1" BindingContext="{Binding Phone,Mode=TwoWay}" IsVisible="{Binding IsLoadingReverse,Mode=TwoWay}" BackgroundColor="White" Padding="10">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition/>
+      </Grid.ColumnDefinitions>
+      <StackLayout HorizontalOptions="Center" VerticalOptions="Center"   Orientation="Vertical" BackgroundColor="White">
+        <abstractions:CircleImage   Source="{Binding CurrentUser.PhotoUrl,Mode=TwoWay}">
+          <abstractions:CircleImage.WidthRequest>
+            <OnPlatform x:TypeArguments="x:Double">
+              <OnPlatform.iOS>55</OnPlatform.iOS>
+              <OnPlatform.Android>100</OnPlatform.Android>
+              <OnPlatform.WinPhone>150</OnPlatform.WinPhone>
+            </OnPlatform>
+          </abstractions:CircleImage.WidthRequest>
+          <abstractions:CircleImage.HeightRequest>
+            <OnPlatform x:TypeArguments="x:Double">
+              <OnPlatform.iOS>55</OnPlatform.iOS>
+              <OnPlatform.Android>100</OnPlatform.Android>
+              <OnPlatform.WinPhone>150</OnPlatform.WinPhone>
+            </OnPlatform>
+          </abstractions:CircleImage.HeightRequest>
+
+        </abstractions:CircleImage>
+
+      </StackLayout>
+      <StackLayout  Grid.Column="1" BackgroundColor="White">
+        <Label  TextColor="#5f5e5c" FontAttributes="Bold" Text="Текущий владелец"  FontSize="20"    />
+        <Label TextColor="#e54126"  Text="{Binding CurrentUser.Fio,Mode=TwoWay}" FontSize="20"   />
+
+        <Label  TextColor="#5f5e5c" FontAttributes="Bold" Text="Когда взял"  FontSize="20"    />
+        <Label TextColor="#e54126"  Text="{Binding BorrowTime,Mode=TwoWay}" FontSize="20"   />
+
+      </StackLayout>
+    </Grid>
+    <Grid  Grid.Row="2" IsVisible="{Binding IsLoadingReverse,Mode=TwoWay}" BindingContext="{Binding Phone,Mode=TwoWay}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  BackgroundColor="#edecea" >
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <StackLayout Padding="10" Grid.Column="0" BackgroundColor="White" Orientation="Vertical" VerticalOptions="Center">
+        <Label TextColor="#5f5e5c" FontAttributes="Bold" Text="Почта"  FontSize="20"    />
+        <Label  TextColor="#e54126"  Text="{Binding CurrentUser.Email,Mode=TwoWay}" FontSize="20"   />
+        <Label  TextColor="#5f5e5c" FontAttributes="Bold" Text="Скайпец"  FontSize="20"    />
+        <Label TextColor="#e54126"  Text="{Binding CurrentUser.Skype,Mode=TwoWay}" FontSize="20"   />
+      </StackLayout>
+      <StackLayout Padding="10" Grid.Column="1" BackgroundColor="White" Orientation="Vertical" VerticalOptions="Center">
+        <Label Grid.Column="1"  TextColor="#5f5e5c" FontAttributes="Bold" Text="Рума"  FontSize="20"    />
+        <Label Grid.Column="1" TextColor="#e54126"  Text="{Binding CurrentUser.Room,Mode=TwoWay}" FontSize="20"   />
+        <Label Grid.Column="1"  TextColor="#5f5e5c" FontAttributes="Bold" Text="Телефон"  FontSize="20"    />
+        <Label Grid.Column="1" TextColor="#e54126"  Text="{Binding CurrentUser.Phone,Mode=TwoWay}" FontSize="20"   />
+      </StackLayout>
+    </Grid>
+    <StackLayout IsVisible="{Binding IsLoadingReverse,Mode=TwoWay}" Grid.Row="3" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+      <Button HorizontalOptions="FillAndExpand" BorderColor="#e24a37" BackgroundColor="#e24a37"   Text="Отправить письмо на почту" Command="{Binding GoToFastTakeByCodeCommand}"/>
+    </StackLayout>
+   
+
+    <ActivityIndicator   Color="#e24a37"   IsRunning="{Binding IsLoading,Mode=TwoWay}" Grid.RowSpan="51"/>
+  </Grid>
+</ContentPage>

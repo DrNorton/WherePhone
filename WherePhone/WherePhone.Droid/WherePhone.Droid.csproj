@@ -173,6 +173,9 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\hamburger.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="DeviceInfoReadme.txt" />
     <Content Include="Properties\AndroidManifest.xml" />
   </ItemGroup>

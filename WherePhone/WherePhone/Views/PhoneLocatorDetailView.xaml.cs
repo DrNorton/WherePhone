@@ -8,18 +8,24 @@ using Xamarin.Forms;
 
 namespace WherePhone.Views
 {
-    public partial class TakeMeView : ContentPage
+    public partial class PhoneLocatorDetailView : ContentPage
     {
-        private TakeMeViewModel _viewModel;
-        
+        private PhoneLocatorDetailViewModel _viewModel;
 
-        public TakeMeView(TakeMeViewModel viewModel)
+        public string Guid
+        {
+            
+            set
+            {
+                _viewModel.GetPhone(value);
+            }
+        }
+
+        public PhoneLocatorDetailView(PhoneLocatorDetailViewModel viewModel)
         {
             InitializeComponent();
             _viewModel = viewModel;
             this.BindingContext = viewModel;
-           
         }
-
     }
 }
